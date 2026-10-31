@@ -1,0 +1,172 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function employee() {
+      return get(/databases/$(database)/documents/employees/$(request.auth.uid)).data;
+    }
+
+    function active() {
+      return signedIn()
+        && exists(/databases/$(database)/documents/employees/$(request.auth.uid))
+        && employee().enabled == true;
+    }
+
+    function roleIs(value) {
+      return active() && employee().role == value;
+    }
+
+    function canAssignTasks() {
+      return roleIs('Manager') || roleIs('Team Lead');
+    }
+
+    function canUsePortal() {
+      return roleIs('Founder') || roleIs('Manager')
+        || roleIs('Team Lead') || roleIs('Employee');
+    }
+
+    function validTeamRole(data) {
+      return (
+        data.team == 'Leadership'
+        && (data.role == 'Founder' || data.role == 'Admin' || data.role == 'Manager')
+      ) || (
+        data.team == 'Web Dev'
+        && (data.role == 'Team Lead' || data.role == 'Employee')
+      ) || (
+        data.team == 'UI/UX Designer'
+        && (data.role == 'Team Lead' || data.role == 'Employee')
+      ) || (
+        data.team == 'QA'
+        && (data.role == 'Team Lead' || data.role == 'Employee')
+      );
+    }
+
+    function validAssignee(data) {
+      return data.assignee == null
+        ? data.assigneeUid == null && data.team == null
+        : data.assigneeUid is string
+          && exists(/databases/$(database)/documents/employees/$(data.assigneeUid))
+          && get(/databases/$(database)/documents/employees/$(data.assigneeUid)).data.employeeId == data.assignee
+          && get(/databases/$(database)/documents/employees/$(data.assigneeUid)).data.role == 'Employee'
+          && get(/databases/$(database)/documents/employees/$(data.assigneeUid)).data.enabled == true
+          && get(/databases/$(database)/documents/employees/$(data.assigneeUid)).data.team == data.team;
+    }
+
+    match /employees/{employeeUid} {
+      allow get: if (signedIn() && request.auth.uid == employeeUid)
+        || (active() && (
+          roleIs('Admin')
+          || roleIs('Founder')
+          || roleIs('Manager')
+          || (roleIs('Team Lead') && resource.data.team == employee().team)
+        ));
+      allow list: if roleIs('Admin') || roleIs('Founder') || roleIs('Manager')
+        || (roleIs('Team Lead') && resource.data.team == employee().team);
+      allow update: if (
+        roleIs('Admin')
+        && request.auth.uid != employeeUid
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['team', 'role', 'enabled'])
+        && validTeamRole(request.resource.data)
+        && request.resource.data.enabled is bool
+      ) || (
+        active()
+        && request.auth.uid == employeeUid
+        && request.resource.data.diff(resource.data).affectedKeys()
+          .hasOnly(['name', 'title', 'avatarUrl'])
+      );
+      allow create, delete: if false;
+    }
+
+    match /tasks/{taskId} {
+      allow get: if canUsePortal() && (
+        employee().role != 'Employee'
+        || resource.data.assignee == employee().employeeId
+        || resource.data.assignee == null
+      ) && (
+        employee().role != 'Team Lead'
+        || resource.data.team == employee().team
+        || resource.data.assignee == null
+      );
+      allow list: if canUsePortal() && (
+        employee().role != 'Employee'
+        || resource.data.assignee == employee().employeeId
+        || resource.data.assignee == null
+      ) && (
+        employee().role != 'Team Lead'
+        || resource.data.team == employee().team
+        || resource.data.assignee == null
+      );
+      allow create: if active() && (
+        (roleIs('Founder')
+          && request.resource.data.assignee == null
+          && request.resource.data.assigneeUid == null
+          && request.resource.data.team == null
+          && request.resource.data.createdBy == request.auth.uid
+          && request.resource.data.status == 'Backlog')
+        || (canAssignTasks()
+          && request.resource.data.assignee is string
+          && request.resource.data.assigneeUid is string
+          && request.resource.data.createdBy == request.auth.uid
+          && request.resource.data.status == 'Assigned'
+          && validAssignee(request.resource.data)
+          && (roleIs('Manager') || request.resource.data.team == employee().team))
+        || (roleIs('Employee')
+          && request.resource.data.assignee == employee().employeeId
+          && request.resource.data.assigneeUid == request.auth.uid
+          && request.resource.data.team == employee().team
+          && request.resource.data.createdBy == request.auth.uid
+          && request.resource.data.status == 'Assigned')
+      );
+      allow update: if active() && (
+        (roleIs('Founder')
+          && request.resource.data.diff(resource.data).affectedKeys()
+            .hasOnly(['title', 'status', 'priority', 'due', 'dueDate', 'updatedAt']))
+        || (canAssignTasks()
+          && validAssignee(request.resource.data)
+          && (roleIs('Manager')
+            || resource.data.assignee == null
+            || resource.data.team == employee().team)
+          && (roleIs('Manager')
+            || request.resource.data.team == employee().team))
+        || (roleIs('Employee')
+          && (
+            (resource.data.assignee == employee().employeeId
+              && request.resource.data.assignee == resource.data.assignee
+              && request.resource.data.diff(resource.data).affectedKeys()
+                .hasOnly(['title', 'status', 'priority', 'due', 'dueDate', 'updatedAt']))
+            || (resource.data.assignee == null
+              && request.resource.data.assignee == employee().employeeId
+              && request.resource.data.assigneeUid == request.auth.uid
+              && request.resource.data.team == employee().team
+              && request.resource.data.status == 'Assigned'
+              && request.resource.data.diff(resource.data).affectedKeys()
+                .hasOnly(['assignee', 'assigneeUid', 'team', 'status', 'updatedAt']))
+          ))
+      );
+      allow delete: if canAssignTasks()
+        && (roleIs('Manager') || resource.data.assignee == null || resource.data.team == employee().team);
+    }
+
+    match /sites/{siteId} {
+      allow read: if canUsePortal();
+      allow create, update, delete: if active() && employee().role != 'Admin';
+    }
+
+    match /auditLog/{entryId} {
+      allow read: if roleIs('Admin');
+      allow create: if active()
+        && request.resource.data.actorUid == request.auth.uid
+        && request.resource.data.actor == employee().name
+        && request.resource.data.role == employee().role
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.action is string
+        && request.resource.data.detail is string;
+      allow update, delete: if false;
+    }
+  }
+}
