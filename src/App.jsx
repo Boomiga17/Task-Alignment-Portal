@@ -7,6 +7,7 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth, db, firebaseConfigured } from './firebase.js';
+import nerdyLogo from './assets/nerdylabs-logo.png';
 import {
   ArrowRight, Bell, Check, Clock3, Columns, Download, Eye, EyeOff,
   FileText, Globe, Layers, List, LogOut, Menu, Moon, Plus, Search, Settings,
@@ -672,7 +673,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
       <div className="login-split-left">
         <div className="login-brand">
           <div className="login-brand-card">
-            <img src="/nerdylabs-logo.png" alt="nerdyLabs" className="login-brand-logo" />
+            <img src={nerdyLogo} alt="nerdyLabs" className="login-brand-logo" />
           </div>
         </div>
         <div className="login-hero">
@@ -703,7 +704,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
         <div className="login-form-container">
           <div className="login-mobile-brand">
             <div className="login-brand-card">
-              <img src="/nerdylabs-logo.png" alt="nerdyLabs" className="login-brand-logo" />
+              <img src={nerdyLogo} alt="nerdyLabs" className="login-brand-logo" />
             </div>
           </div>
           <h2>Sign in</h2>
@@ -3149,7 +3150,7 @@ export default function App() {
         <div className="sidebar-brand-row">
           <button className="brand" onClick={handleLogout} aria-label="Sign out and return to sign in" style={{ width: '100%' }}>
             <div className="brand-logo-card" style={{ width: '100%' }}>
-              <img src="/nerdylabs-logo.png" alt="nerdyLabs" className="sidebar-brand-logo" />
+              <img src={nerdyLogo} alt="nerdyLabs" className="sidebar-brand-logo" />
             </div>
           </button>
           <button className="mobile-sidebar-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">

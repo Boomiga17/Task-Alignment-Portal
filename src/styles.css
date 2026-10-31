@@ -7022,7 +7022,7 @@ select.field-control {
   height: 100vh;
   flex: 0 0 42%;
   background-color: #020659;
-  background-image: linear-gradient(180deg, rgba(2, 6, 75, 0.94), rgba(5, 12, 105, 0.88)), url('/signin-banner.jpg');
+  background-image: linear-gradient(180deg, rgba(2, 6, 75, 0.94), rgba(5, 12, 105, 0.88)), url('./assets/signin-banner.jpg');
   background-position: center;
   background-size: cover;
   padding: 48px 44px;
@@ -7240,7 +7240,7 @@ select.field-control {
   background-color: #020659;
   background-image:
     linear-gradient(145deg, rgba(2, 6, 75, 0.94), rgba(5, 12, 105, 0.88)),
-    url('/signin-banner.jpg');
+    url('./assets/signin-banner.jpg');
   background-position: center;
   background-size: cover;
   overflow: hidden;
