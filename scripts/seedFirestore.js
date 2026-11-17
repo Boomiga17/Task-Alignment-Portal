@@ -61,19 +61,19 @@ const db = getFirestore(app);
 
 // Sample Staff Accounts
 const sampleEmployees = [
-  { id: 'E-001', name: 'Priya Nair', title: 'Head of Delivery', team: 'Leadership', role: 'Admin', email: 'priya.nair@nerdylabs.io', enabled: true },
-  { id: 'E-012', name: 'Founder Account', title: 'Founder', team: 'Leadership', role: 'Founder', email: 'founder@nerdylabs.io', enabled: true },
-  { id: 'E-002', name: 'Rohan Verma', title: 'Project Manager', team: 'Leadership', role: 'Manager', email: 'rohan.verma@nerdylabs.io', enabled: true },
-  { id: 'E-003', name: 'Ananya Iyer', title: 'Web Dev Team Lead', team: 'Web Dev', role: 'Team Lead', email: 'devtl@nerdylabs.io', enabled: true },
-  { id: 'E-004', name: 'Karthik Rao', title: 'QA Team Lead', team: 'QA', role: 'Team Lead', email: 'qa-tl@nerdylabs.io', enabled: true },
-  { id: 'E-005', name: 'Dev Malhotra', title: 'Frontend Developer', team: 'Web Dev', role: 'Employee', email: 'dev.malhotra@nerdylabs.io', enabled: true },
-  { id: 'E-006', name: 'Sneha Kulkarni', title: 'Backend Developer', team: 'Web Dev', role: 'Employee', email: 'sneha.kulkarni@nerdylabs.io', enabled: true },
-  { id: 'E-008', name: 'Meera Joshi', title: 'UI/UX Team Lead', team: 'UI/UX Designer', role: 'Team Lead', email: 'uiux-tl@nerdylabs.io', enabled: true },
+  { id: 'E-001', name: 'Priya Nair', title: 'Head of Delivery', team: 'Leadership', role: 'Admin', email: 'priya.nair@accesspoint.io', enabled: true },
+  { id: 'E-012', name: 'Founder Account', title: 'Founder', team: 'Leadership', role: 'Founder', email: 'founder@accesspoint.io', enabled: true },
+  { id: 'E-002', name: 'Rohan Verma', title: 'Project Manager', team: 'Leadership', role: 'Manager', email: 'rohan.verma@accesspoint.io', enabled: true },
+  { id: 'E-003', name: 'Ananya Iyer', title: 'Web Dev Team Lead', team: 'Web Dev', role: 'Team Lead', email: 'devtl@accesspoint.io', enabled: true },
+  { id: 'E-004', name: 'Karthik Rao', title: 'QA Team Lead', team: 'QA', role: 'Team Lead', email: 'qa-tl@accesspoint.io', enabled: true },
+  { id: 'E-005', name: 'Dev Malhotra', title: 'Frontend Developer', team: 'Web Dev', role: 'Employee', email: 'dev.malhotra@accesspoint.io', enabled: true },
+  { id: 'E-006', name: 'Sneha Kulkarni', title: 'Backend Developer', team: 'Web Dev', role: 'Employee', email: 'sneha.kulkarni@accesspoint.io', enabled: true },
+  { id: 'E-008', name: 'Meera Joshi', title: 'UI/UX Team Lead', team: 'UI/UX Designer', role: 'Team Lead', email: 'uiux-tl@accesspoint.io', enabled: true },
 ];
 
 // Sample Websites / Projects
 const sampleSites = [
-  { id: 'site-nl-core', name: 'Nerdy Labs Portal', url: 'https://portal.nerdylabs.io', domain: 'nerdylabs.io', environment: 'Production', techStack: ['React', 'Node.js', 'Firebase'], features: ['Authentication', 'Task Kanban', 'Role Access'] },
+  { id: 'site-ap-core', name: 'AccessPoint Portal', url: 'https://portal.accesspoint.io', domain: 'accesspoint.io', environment: 'Production', techStack: ['React', 'Node.js', 'Firebase'], features: ['Authentication', 'Task Kanban', 'Role Access'] },
   { id: 'site-ecommerce', name: 'Apex Storefront', url: 'https://store.apex.com', domain: 'apex.com', environment: 'Production', techStack: ['Next.js', 'Tailwind', 'Stripe'], features: ['Checkout Revamp', 'Cart Optimization'] },
   { id: 'site-analytics', name: 'Pulse Dashboard', url: 'https://pulse.internal.io', domain: 'internal.io', environment: 'Staging', techStack: ['React', 'Python', 'FastAPI'], features: ['Real-time Metrics', 'Export PDF'] },
 ];

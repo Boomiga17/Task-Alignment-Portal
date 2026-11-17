@@ -7,7 +7,7 @@ import {
 } from 'firebase/firestore';
 import { onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth, db, firebaseConfigured } from './firebase.js';
-import nerdyLogo from './assets/nerdylabs-logo.png';
+import accessPointLogo from './assets/accesspoint-logo.svg';
 import {
   ArrowRight, Bell, Check, Clock3, Columns, Download, Eye, EyeOff,
   FileText, Globe, Layers, List, LogOut, Menu, Moon, Plus, Search, Settings,
@@ -18,22 +18,22 @@ import {
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const employees = [
-  { id: 'E-001', name: 'Priya Nair',      title: 'Head of Delivery',      team: 'Leadership', role: 'Admin',     email: 'priya.nair@nerdylabs.io',      password: 'admin@123' },
-  { id: 'E-012', name: 'Founder Account', title: 'Founder',               team: 'Leadership', role: 'Founder',   email: 'founder@nerdylabs.io',        password: 'founder@123' },
-  { id: 'E-002', name: 'Rohan Verma',     title: 'Project Manager',        team: 'Leadership', role: 'Manager',   email: 'rohan.verma@nerdylabs.io',     password: 'manager@123' },
-  { id: 'E-003', name: 'Ananya Iyer',     title: 'Web Dev Team Lead',      team: 'Web Dev',        teams: ['Web Dev'],        role: 'Team Lead', roles: ['Team Lead'], email: 'devtl@nerdylabs.io',           password: 'devtl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
-  { id: 'E-004', name: 'Karthik Rao',     title: 'QA Team Lead',           team: 'QA',             teams: ['QA'],             role: 'Team Lead', roles: ['Team Lead'], email: 'qa-tl@nerdylabs.io',           password: 'qa-tl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
-  { id: 'E-005', name: 'Dev Malhotra',    title: 'Frontend Developer',     team: 'Web Dev',    role: 'Employee',  email: 'dev.malhotra@nerdylabs.io',    password: 'dev@123' },
-  { id: 'E-006', name: 'Sneha Kulkarni', title: 'Backend Developer',      team: 'Web Dev',    role: 'Employee',  email: 'sneha.kulkarni@nerdylabs.io',  password: 'sneha@123' },
-  { id: 'E-007', name: 'Imran Sheikh',   title: 'Full-Stack Developer',   team: 'Web Dev',    role: 'Employee',  email: 'imran.sheikh@nerdylabs.io',    password: 'imran@123' },
-  { id: 'E-008', name: 'Meera Joshi',    title: 'UI/UX Team Lead',        team: 'UI/UX Designer', teams: ['UI/UX Designer'], role: 'Team Lead', roles: ['Team Lead'], email: 'uiux-tl@nerdylabs.io',     password: 'uiux-tl@123', pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
-  { id: 'E-009', name: 'Tarun Bose',     title: 'QA Engineer',            team: 'QA',         role: 'Employee',  email: 'tarun.bose@nerdylabs.io',      password: 'tarun@123' },
-  { id: 'E-010', name: 'Lakshmi Pillai', title: 'SEO Specialist',         team: 'Web Dev',    role: 'Employee',  email: 'lakshmi.pillai@nerdylabs.io',  password: 'lakshmi@123' },
-  { id: 'E-011', name: 'Arjun Das',      title: 'UI/UX Designer',         team: 'UI/UX Designer',role: 'Employee', email: 'arjun.das@nerdylabs.io',       password: 'arjun@123' },
-  { id: 'E-013', name: 'Anya Sen',       title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'uiux@nerdylabs.io',            password: 'uiux@123' },
-  { id: 'E-014', name: 'Kabir Mehta',    title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'qa@nerdylabs.io',              password: 'qa@123' },
-  { id: 'E-015', name: 'Designer Demo',    title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'designer@nerdylabs.io',        password: 'designer@123' },
-  { id: 'E-016', name: 'QA Tester Demo',   title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'tester@nerdylabs.io',          password: 'qa@123' },
+  { id: 'E-001', name: 'Priya Nair',      title: 'Head of Delivery',      team: 'Leadership', role: 'Admin',     email: 'priya.nair@accesspoint.io',      password: 'admin@123' },
+  { id: 'E-012', name: 'Founder Account', title: 'Founder',               team: 'Leadership', role: 'Founder',   email: 'founder@accesspoint.io',        password: 'founder@123' },
+  { id: 'E-002', name: 'Rohan Verma',     title: 'Project Manager',        team: 'Leadership', role: 'Manager',   email: 'rohan.verma@accesspoint.io',     password: 'manager@123' },
+  { id: 'E-003', name: 'Ananya Iyer',     title: 'Web Dev Team Lead',      team: 'Web Dev',        teams: ['Web Dev'],        role: 'Team Lead', roles: ['Team Lead'], email: 'devtl@accesspoint.io',           password: 'devtl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
+  { id: 'E-004', name: 'Karthik Rao',     title: 'QA Team Lead',           team: 'QA',             teams: ['QA'],             role: 'Team Lead', roles: ['Team Lead'], email: 'qa-tl@accesspoint.io',           password: 'qa-tl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
+  { id: 'E-005', name: 'Dev Malhotra',    title: 'Frontend Developer',     team: 'Web Dev',    role: 'Employee',  email: 'dev.malhotra@accesspoint.io',    password: 'dev@123' },
+  { id: 'E-006', name: 'Sneha Kulkarni', title: 'Backend Developer',      team: 'Web Dev',    role: 'Employee',  email: 'sneha.kulkarni@accesspoint.io',  password: 'sneha@123' },
+  { id: 'E-007', name: 'Imran Sheikh',   title: 'Full-Stack Developer',   team: 'Web Dev',    role: 'Employee',  email: 'imran.sheikh@accesspoint.io',    password: 'imran@123' },
+  { id: 'E-008', name: 'Meera Joshi',    title: 'UI/UX Team Lead',        team: 'UI/UX Designer', teams: ['UI/UX Designer'], role: 'Team Lead', roles: ['Team Lead'], email: 'uiux-tl@accesspoint.io',     password: 'uiux-tl@123', pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
+  { id: 'E-009', name: 'Tarun Bose',     title: 'QA Engineer',            team: 'QA',         role: 'Employee',  email: 'tarun.bose@accesspoint.io',      password: 'tarun@123' },
+  { id: 'E-010', name: 'Lakshmi Pillai', title: 'SEO Specialist',         team: 'Web Dev',    role: 'Employee',  email: 'lakshmi.pillai@accesspoint.io',  password: 'lakshmi@123' },
+  { id: 'E-011', name: 'Arjun Das',      title: 'UI/UX Designer',         team: 'UI/UX Designer',role: 'Employee', email: 'arjun.das@accesspoint.io',       password: 'arjun@123' },
+  { id: 'E-013', name: 'Anya Sen',       title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'uiux@accesspoint.io',            password: 'uiux@123' },
+  { id: 'E-014', name: 'Kabir Mehta',    title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'qa@accesspoint.io',              password: 'qa@123' },
+  { id: 'E-015', name: 'Designer Demo',    title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'designer@accesspoint.io',        password: 'designer@123' },
+  { id: 'E-016', name: 'QA Tester Demo',   title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'tester@accesspoint.io',          password: 'qa@123' },
 ];
 
 const employeeTeams = ['Leadership', 'Web Dev', 'UI/UX Designer', 'QA'];
@@ -160,11 +160,11 @@ function getEmployeeAllowedPages(employee) {
   }
   return basePages;
 }
-const accountSettingsKey = 'nerdylabs-account-settings';
-const accessRequestsKey = 'nerdylabs-access-requests';
-const profileSettingsKey = 'nerdylabs-user-profiles';
-const deletedEmployeesKey = 'nerdylabs-deleted-employees';
-const auditLogKey = 'nerdylabs-audit-log';
+const accountSettingsKey = 'accesspoint-account-settings';
+const accessRequestsKey = 'accesspoint-access-requests';
+const profileSettingsKey = 'accesspoint-user-profiles';
+const deletedEmployeesKey = 'accesspoint-deleted-employees';
+const auditLogKey = 'accesspoint-audit-log';
 
 function formatAuditTimestamp(date = new Date()) {
   const d = new Date(date);
@@ -184,11 +184,11 @@ function formatAuditTimestamp(date = new Date()) {
 }
 
 const defaultAuditLog = [
-  { id: 1, action: 'User signed in', taskId: null, actor: 'Priya Nair', role: 'Admin', detail: 'Signed in to portal session (priya.nair@nerdylabs.io)', timestamp: 'Today • 08:30 AM' },
+  { id: 1, action: 'User signed in', taskId: null, actor: 'Priya Nair', role: 'Admin', detail: 'Signed in to portal session (priya.nair@accesspoint.io)', timestamp: 'Today • 08:30 AM' },
   { id: 2, action: 'Created task', taskId: 101, actor: 'Priya Nair', role: 'Admin', detail: 'Created task NL-101: "Order confirmation emails via SMTP" for Website', timestamp: 'Today • 09:15 AM' },
   { id: 3, action: 'Updated status', taskId: 110, actor: 'Sneha Kulkarni', role: 'Employee', detail: 'Moved task NL-110 ("Payment Gateway Checkout") to Blocked', timestamp: 'Today • 11:42 AM' },
   { id: 4, action: 'Deleted task', taskId: 119, actor: 'Rohan Verma', role: 'Manager', detail: 'Removed task NL-119: "Duplicate contact page draft"', timestamp: 'Yesterday • 04:20 PM' },
-  { id: 5, action: 'Added project', taskId: null, actor: 'Founder Account', role: 'Founder', detail: 'Created project "Nerdy Labs Cloud Portal" (Live)', timestamp: 'Yesterday • 02:10 PM' },
+  { id: 5, action: 'Added project', taskId: null, actor: 'Founder Account', role: 'Founder', detail: 'Created project "AccessPoint Cloud Portal" (Live)', timestamp: 'Yesterday • 02:10 PM' },
   { id: 6, action: 'Deleted project', taskId: null, actor: 'Rohan Verma', role: 'Manager', detail: 'Removed project "Legacy Client Demo" (Demo)', timestamp: 'Yesterday • 11:05 AM' },
 ];
 
@@ -317,7 +317,7 @@ const sites = [
 
 function loadProjectSites() {
   try {
-    const stored = window.localStorage.getItem('nerdylabs-project-sites');
+    const stored = window.localStorage.getItem('accesspoint-project-sites') || window.localStorage.getItem('nerdylabs-project-sites');
     if (!stored) return sites;
     const parsed = JSON.parse(stored);
     if (!Array.isArray(parsed)) throw new Error('Saved project websites must be a list.');
@@ -489,11 +489,11 @@ const taskSeed = seedTasks.map(([id,title,module,assignee,priority,status]) => {
   };
 });
 
-const tasksStorageKey = 'nerdylabs-tasks';
+const tasksStorageKey = 'accesspoint-tasks';
 
 function loadTaskData() {
   try {
-    const stored = window.localStorage.getItem(tasksStorageKey);
+    const stored = window.localStorage.getItem(tasksStorageKey) || window.localStorage.getItem('nerdylabs-tasks');
     if (!stored) return taskSeed;
     const parsed = JSON.parse(stored);
     if (!Array.isArray(parsed)) throw new Error('Saved tasks must be a list.');
@@ -673,7 +673,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
       <div className="login-split-left">
         <div className="login-brand">
           <div className="login-brand-card">
-            <img src={nerdyLogo} alt="nerdyLabs" className="login-brand-logo" />
+            <img src={accessPointLogo} alt="AccessPoint" className="login-brand-logo" />
           </div>
         </div>
         <div className="login-hero">
@@ -704,7 +704,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
         <div className="login-form-container">
           <div className="login-mobile-brand">
             <div className="login-brand-card">
-              <img src={nerdyLogo} alt="nerdyLabs" className="login-brand-logo" />
+              <img src={accessPointLogo} alt="AccessPoint" className="login-brand-logo" />
             </div>
           </div>
           <h2>Sign in</h2>
@@ -713,7 +713,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
           <form className="login-form" onSubmit={handleSubmit} noValidate>
             <div className="login-field">
               <label htmlFor="l-email">Email address</label>
-              <input id="l-email" type="email" autoComplete="email" autoFocus placeholder="you@nerdylabs.io"
+              <input id="l-email" type="email" autoComplete="email" autoFocus placeholder="you@accesspoint.io"
                 value={email} onChange={e => setEmail(e.target.value)} required />
             </div>
             <div className="login-field">
@@ -751,15 +751,15 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
 
           <div className="cred-table" style={{ maxHeight: '280px', overflowY: 'auto' }}>
             {[
-              { role: 'Admin', name: 'Priya Nair', email: 'priya.nair@nerdylabs.io', pass: 'admin@123', badge: 'cred-admin' },
-              { role: 'Founder', name: 'Founder Account', email: 'founder@nerdylabs.io', pass: 'founder@123', badge: 'cred-admin' },
-              { role: 'Manager', name: 'Rohan Verma', email: 'rohan.verma@nerdylabs.io', pass: 'manager@123', badge: 'cred-manager' },
-              { role: 'Dev TL', name: 'Ananya Iyer (Dev TL)', email: 'devtl@nerdylabs.io', pass: 'devtl@123', badge: 'cred-team-lead' },
-              { role: 'UI/UX TL', name: 'Meera Joshi (UI/UX TL)', email: 'uiux-tl@nerdylabs.io', pass: 'uiux-tl@123', badge: 'cred-uiux' },
-              { role: 'QA TL', name: 'Karthik Rao (QA TL)', email: 'qa-tl@nerdylabs.io', pass: 'qa-tl@123', badge: 'cred-qa' },
-              { role: 'Developer', name: 'Dev Malhotra', email: 'dev.malhotra@nerdylabs.io', pass: 'dev@123', badge: 'cred-employee' },
-              { role: 'UI/UX Designer', name: 'Anya Sen', email: 'uiux@nerdylabs.io', pass: 'uiux@123', badge: 'cred-uiux' },
-              { role: 'QA Engineer', name: 'Kabir Mehta', email: 'qa@nerdylabs.io', pass: 'qa@123', badge: 'cred-qa' },
+              { role: 'Admin', name: 'Priya Nair', email: 'priya.nair@accesspoint.io', pass: 'admin@123', badge: 'cred-admin' },
+              { role: 'Founder', name: 'Founder Account', email: 'founder@accesspoint.io', pass: 'founder@123', badge: 'cred-admin' },
+              { role: 'Manager', name: 'Rohan Verma', email: 'rohan.verma@accesspoint.io', pass: 'manager@123', badge: 'cred-manager' },
+              { role: 'Dev TL', name: 'Ananya Iyer (Dev TL)', email: 'devtl@accesspoint.io', pass: 'devtl@123', badge: 'cred-team-lead' },
+              { role: 'UI/UX TL', name: 'Meera Joshi (UI/UX TL)', email: 'uiux-tl@accesspoint.io', pass: 'uiux-tl@123', badge: 'cred-uiux' },
+              { role: 'QA TL', name: 'Karthik Rao (QA TL)', email: 'qa-tl@accesspoint.io', pass: 'qa-tl@123', badge: 'cred-qa' },
+              { role: 'Developer', name: 'Dev Malhotra', email: 'dev.malhotra@accesspoint.io', pass: 'dev@123', badge: 'cred-employee' },
+              { role: 'UI/UX Designer', name: 'Anya Sen', email: 'uiux@accesspoint.io', pass: 'uiux@123', badge: 'cred-uiux' },
+              { role: 'QA Engineer', name: 'Kabir Mehta', email: 'qa@accesspoint.io', pass: 'qa@123', badge: 'cred-qa' },
             ].map((account) => (
               <button
                 key={account.email}
@@ -820,7 +820,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
 
                 <div className="form-group">
                   <label className="field-label" htmlFor="req-email">Work email address</label>
-                  <input className="field-control" id="req-email" type="email" placeholder="e.g. rahul@nerdylabs.io" value={reqEmail} onChange={e => setReqEmail(e.target.value)} required />
+                  <input className="field-control" id="req-email" type="email" placeholder="e.g. rahul@accesspoint.io" value={reqEmail} onChange={e => setReqEmail(e.target.value)} required />
                 </div>
 
                 <div className="form-group">
@@ -909,7 +909,7 @@ function generateTasksPdf({
   tasksToExport,
   projectSites = [],
   teamMembers = [],
-  portalName = 'Nerdy Labs Priority Portal',
+  portalName = 'AccessPoint Portal',
   dateScopeLabel = 'All Dates',
   dateRangeText = '',
   exportedByName = 'Admin',
@@ -928,7 +928,7 @@ function generateTasksPdf({
   doc.setTextColor(255, 255, 255);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(15);
-  doc.text((portalName || 'NERDY LABS PRIORITY PORTAL').toUpperCase(), 30, 28);
+  doc.text((portalName || 'ACCESSPOINT PORTAL').toUpperCase(), 30, 28);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
@@ -1062,7 +1062,7 @@ function generateTasksPdf({
       doc.setFontSize(7.5);
       doc.setTextColor(148, 163, 184);
       doc.text(
-        `Nerdy Labs Priority Management Portal · Confidential · Exported on ${now.toISOString().slice(0, 10)}`,
+        `AccessPoint Priority Management Portal · Confidential · Exported on ${now.toISOString().slice(0, 10)}`,
         30,
         pageHeight - 14
       );
@@ -1077,14 +1077,14 @@ function generateTasksPdf({
 
   const filenameDate = now.toISOString().slice(0, 10);
   const cleanScope = dateScopeLabel.toLowerCase().replace(/[^a-z0-9]/g, '-');
-  doc.save(`nerdylabs-tasks-${cleanScope}-${filenameDate}.pdf`);
+  doc.save(`accesspoint-tasks-${cleanScope}-${filenameDate}.pdf`);
 }
 
 function generateUserPdf({
   employee,
   tasks = [],
   auditLog = [],
-  portalName = 'Nerdy Labs Priority Portal',
+  portalName = 'AccessPoint Portal',
   currentEmployee = null,
 }) {
   const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
@@ -1099,7 +1099,7 @@ function generateUserPdf({
   doc.setTextColor(255, 255, 255);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(14);
-  doc.text((portalName || 'NERDY LABS PRIORITY PORTAL').toUpperCase(), 25, 26);
+  doc.text((portalName || 'ACCESSPOINT PORTAL').toUpperCase(), 25, 26);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
@@ -1219,12 +1219,12 @@ function generateUserPdf({
   }
 
   const sanitizedName = employee.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
-  doc.save(`nerdylabs-user-${sanitizedName}-${now.toISOString().slice(0, 10)}.pdf`);
+  doc.save(`accesspoint-user-${sanitizedName}-${now.toISOString().slice(0, 10)}.pdf`);
 }
 
 function generateAuditPdf({
   auditLog = [],
-  portalName = 'Nerdy Labs Priority Portal',
+  portalName = 'AccessPoint Portal',
   currentEmployee = null,
   dateScopeLabel = 'All Dates',
 }) {
@@ -1239,7 +1239,7 @@ function generateAuditPdf({
   doc.setTextColor(255, 255, 255);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(15);
-  doc.text((portalName || 'NERDY LABS PRIORITY PORTAL').toUpperCase(), 30, 26);
+  doc.text((portalName || 'ACCESSPOINT PORTAL').toUpperCase(), 30, 26);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9.5);
@@ -1280,18 +1280,18 @@ function generateAuditPdf({
     didDrawPage: (data) => {
       doc.setFontSize(7.5);
       doc.setTextColor(148, 163, 184);
-      doc.text(`Nerdy Labs Priority Management Portal · Audit History · Confidential`, 30, pageHeight - 14);
+      doc.text(`AccessPoint Priority Management Portal · Audit History · Confidential`, 30, pageHeight - 14);
       doc.text(`Page ${data.pageNumber} of ${doc.internal.getNumberOfPages()}`, pageWidth - 30, pageHeight - 14, { align: 'right' });
     },
   });
 
-  doc.save(`nerdylabs-audit-log-${now.toISOString().slice(0, 10)}.pdf`);
+  doc.save(`accesspoint-audit-log-${now.toISOString().slice(0, 10)}.pdf`);
 }
 
 function generateSignInUsersPdf({
   users = [],
   tasks = [],
-  portalName = 'Nerdy Labs Priority Portal',
+  portalName = 'AccessPoint Portal',
   currentEmployee = null,
 }) {
   const doc = new jsPDF({ orientation: 'portrait', unit: 'pt', format: 'a4' });
@@ -1305,7 +1305,7 @@ function generateSignInUsersPdf({
   doc.setTextColor(255, 255, 255);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(14);
-  doc.text((portalName || 'NERDY LABS PRIORITY PORTAL').toUpperCase(), 25, 26);
+  doc.text((portalName || 'ACCESSPOINT PORTAL').toUpperCase(), 25, 26);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(9);
@@ -1350,12 +1350,12 @@ function generateSignInUsersPdf({
     didDrawPage: (data) => {
       doc.setFontSize(7.5);
       doc.setTextColor(148, 163, 184);
-      doc.text(`Nerdy Labs Priority Management Portal · Sign-in Users Record · Confidential`, 25, pageHeight - 14);
+      doc.text(`AccessPoint Priority Management Portal · Sign-in Users Record · Confidential`, 25, pageHeight - 14);
       doc.text(`Page ${data.pageNumber} of ${doc.internal.getNumberOfPages()}`, pageWidth - 25, pageHeight - 14, { align: 'right' });
     },
   });
 
-  doc.save(`nerdylabs-signin-users-${now.toISOString().slice(0, 10)}.pdf`);
+  doc.save(`accesspoint-signin-users-${now.toISOString().slice(0, 10)}.pdf`);
 }
 
 function DateWiseExportModal({
@@ -1365,7 +1365,7 @@ function DateWiseExportModal({
   teamMembers = [],
   projectSites = [],
   auditLog = [],
-  portalName = 'Nerdy Labs Priority Portal',
+  portalName = 'AccessPoint Portal',
   currentEmployee = null,
   recordAudit,
   setNotice,
@@ -1469,7 +1469,7 @@ function DateWiseExportModal({
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `nerdylabs-tasks-${dateScopeLabel.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${new Date().toISOString().slice(0, 10)}.csv`;
+          a.download = `accesspoint-tasks-${dateScopeLabel.toLowerCase().replace(/[^a-z0-9]/g, '-')}-${new Date().toISOString().slice(0, 10)}.csv`;
           a.click();
           URL.revokeObjectURL(url);
           if (recordAudit) {
@@ -1497,7 +1497,7 @@ function DateWiseExportModal({
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `nerdylabs-audit-${new Date().toISOString().slice(0, 10)}.csv`;
+          a.download = `accesspoint-audit-${new Date().toISOString().slice(0, 10)}.csv`;
           a.click();
           URL.revokeObjectURL(url);
           if (recordAudit) {
@@ -1526,7 +1526,7 @@ function DateWiseExportModal({
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
           a.href = url;
-          a.download = `nerdylabs-users-${new Date().toISOString().slice(0, 10)}.csv`;
+          a.download = `accesspoint-users-${new Date().toISOString().slice(0, 10)}.csv`;
           a.click();
           URL.revokeObjectURL(url);
           if (recordAudit) {
@@ -1755,7 +1755,7 @@ export default function App() {
   const [currentEmployee, setCurrentEmployee] = useState(null);
   const [profileSettings, setProfileSettings] = useState(loadProfileSettings);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
-  const [portalName, setPortalName] = useState('Nerdy Labs');
+  const [portalName, setPortalName] = useState('AccessPoint');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accountSettings, setAccountSettings] = useState(loadAccountSettings);
   const [accessRequests, setAccessRequests] = useState(loadAccessRequests);
@@ -1942,7 +1942,7 @@ export default function App() {
   useEffect(() => {
     if (firebaseConfigured) return;
     try {
-      window.localStorage.setItem('nerdylabs-project-sites', JSON.stringify(projectSites));
+      window.localStorage.setItem('accesspoint-project-sites', JSON.stringify(projectSites));
     } catch (error) {
       console.error('Unable to save project website details.', error);
       setNotice('Project website changes could not be saved in this browser.');
@@ -2027,12 +2027,12 @@ export default function App() {
     const cleanEmail = email.trim().toLowerCase();
     const emp = teamMembers.find(person => {
       if (person.email.toLowerCase() === cleanEmail && person.password === password) return true;
-      if (cleanEmail === 'ananya.iyer@nerdylabs.io' && (password === 'tl@123' || password === 'devtl@123') && person.id === 'E-003') return true;
-      if (cleanEmail === 'devtl@nerdylabs.io' && (password === 'devtl@123' || password === 'tl@123') && person.id === 'E-003') return true;
-      if (cleanEmail === 'karthik.rao@nerdylabs.io' && (password === 'tl@456' || password === 'qa-tl@123') && person.id === 'E-004') return true;
-      if (cleanEmail === 'qa-tl@nerdylabs.io' && (password === 'qa-tl@123' || password === 'tl@456') && person.id === 'E-004') return true;
-      if (cleanEmail === 'meera.joshi@nerdylabs.io' && (password === 'meera@123' || password === 'uiux-tl@123') && person.id === 'E-008') return true;
-      if (cleanEmail === 'uiux-tl@nerdylabs.io' && (password === 'uiux-tl@123' || password === 'meera@123') && person.id === 'E-008') return true;
+      if (cleanEmail === 'ananya.iyer@accesspoint.io' && (password === 'tl@123' || password === 'devtl@123') && person.id === 'E-003') return true;
+      if (cleanEmail === 'devtl@accesspoint.io' && (password === 'devtl@123' || password === 'tl@123') && person.id === 'E-003') return true;
+      if (cleanEmail === 'karthik.rao@accesspoint.io' && (password === 'tl@456' || password === 'qa-tl@123') && person.id === 'E-004') return true;
+      if (cleanEmail === 'qa-tl@accesspoint.io' && (password === 'qa-tl@123' || password === 'tl@456') && person.id === 'E-004') return true;
+      if (cleanEmail === 'meera.joshi@accesspoint.io' && (password === 'meera@123' || password === 'uiux-tl@123') && person.id === 'E-008') return true;
+      if (cleanEmail === 'uiux-tl@accesspoint.io' && (password === 'uiux-tl@123' || password === 'meera@123') && person.id === 'E-008') return true;
       return false;
     });
     if (!emp) return { success: false, message: 'Invalid email or password.' };
@@ -2613,7 +2613,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'nerdylabs-task-report.csv';
+    a.download = 'accesspoint-task-report.csv';
     a.click();
     URL.revokeObjectURL(url);
     recordAudit('Downloaded report', null, `CSV export for ${tasks.length} tasks`, currentEmployee?.name || 'System', currentEmployee?.role || 'System');
@@ -2635,7 +2635,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `nerdylabs-audit-log-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `accesspoint-audit-log-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     recordAudit('Downloaded audit log', null, `Exported ${auditLog.length} audit events`);
@@ -2676,7 +2676,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `nerdylabs-portal-full-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.download = `accesspoint-portal-full-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
     URL.revokeObjectURL(url);
     recordAudit('Exported all portal data', null, 'Downloaded full system backup (JSON)');
@@ -2739,7 +2739,7 @@ export default function App() {
     const a = document.createElement('a');
     a.href = url;
     const sanitizedName = employee.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
-    a.download = `nerdylabs-user-${sanitizedName}-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `accesspoint-user-${sanitizedName}-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     recordAudit('Downloaded user data', null, `Exported separate report for ${employee.name} (${employee.email})`);
@@ -2766,7 +2766,7 @@ export default function App() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `nerdylabs-signin-users-${new Date().toISOString().slice(0, 10)}.csv`;
+    a.download = `accesspoint-signin-users-${new Date().toISOString().slice(0, 10)}.csv`;
     a.click();
     URL.revokeObjectURL(url);
     recordAudit('Downloaded sign-in users list', null, `Exported ${signInUsers.length} active sign-in accounts`);
@@ -3150,7 +3150,7 @@ export default function App() {
         <div className="sidebar-brand-row">
           <button className="brand" onClick={handleLogout} aria-label="Sign out and return to sign in" style={{ width: '100%' }}>
             <div className="brand-logo-card" style={{ width: '100%' }}>
-              <img src={nerdyLogo} alt="nerdyLabs" className="sidebar-brand-logo" />
+              <img src={accessPointLogo} alt="AccessPoint" className="sidebar-brand-logo" />
             </div>
           </button>
           <button className="mobile-sidebar-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
@@ -5176,7 +5176,7 @@ function SignOutModal({ isOpen, onClose, onConfirm, currentEmployee }) {
         <div className="beast-signout-content">
           <span className="beast-signout-eyebrow">SESSION CONFIRMATION</span>
           <h2 id="signout-modal-title" className="beast-signout-title">
-            Sign Out of Nerdy Labs?
+            Sign Out of AccessPoint?
           </h2>
           <p className="beast-signout-desc">
             Are you sure you want to end your current session? You will be safely signed out and returned to the sign-in screen.
@@ -6451,7 +6451,7 @@ function TaskDrawer({ task, employees, sites, close, updateTask, deleteTask, rol
         {/* JIRA HEADER */}
         <div className="jira-drawer-header">
           <div className="jira-breadcrumb">
-            <span className="jira-project-name">NERDY LABS</span>
+            <span className="jira-project-name">ACCESSPOINT</span>
             <span>/</span>
             {(draftWebsiteName || getTaskWebsiteName(task, site)) && (
               <>

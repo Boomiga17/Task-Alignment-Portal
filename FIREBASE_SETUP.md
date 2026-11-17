@@ -55,5 +55,5 @@ from granting themselves additional privileges.
 
 Without Firebase configuration the app remains in local demo mode. Demo data
 is stored only in the current browser and is not shared across users. The local
-demo Founder account is `founder@nerdylabs.io` / `founder@123`; never use demo
+demo Founder account is `founder@accesspoint.io` / `founder@123`; never use demo
 credentials for a deployed portal.
