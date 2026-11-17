@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 56" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 210 56" fill="none">
   <defs>
     <!-- Deep Blue Gradient matching the portal navy -->
     <linearGradient id="shBlue" x1="6" y1="6" x2="48" y2="48" gradientUnits="userSpaceOnUse">
@@ -15,7 +15,7 @@
     </linearGradient>
 
     <!-- Wordmark Hub Orange Gradient -->
-    <linearGradient id="textHub" x1="115" y1="16" x2="180" y2="38" gradientUnits="userSpaceOnUse">
+    <linearGradient id="textHub" x1="120" y1="16" x2="190" y2="38" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#F97316" />
       <stop offset="100%" stop-color="#EA580C" />
     </linearGradient>
@@ -43,10 +43,6 @@
   <!-- Wordmark -->
   <g>
     <!-- "Smart" in deep navy, "Hub" in vibrant orange -->
-    <text x="60" y="32" font-family="'Inter', system-ui, -apple-system, sans-serif" font-weight="800" font-size="22" fill="#020659" letter-spacing="-0.4">Smart<tspan fill="url(#textHub)" font-weight="800">Hub</tspan></text>
-    <!-- Tagline -->
-    <text x="61" y="45" font-family="'Inter', system-ui, -apple-system, sans-serif" font-weight="700" font-size="7.5" fill="#64748B" letter-spacing="1.6">TASK ALIGNMENT PORTAL</text>
-    <!-- Orange accent dot -->
-    <circle cx="185" cy="22" r="2.5" fill="#F97316" />
+    <text x="62" y="36.5" font-family="'Inter', system-ui, -apple-system, sans-serif" font-weight="800" font-size="25" fill="#020659" letter-spacing="-0.5">Smart<tspan fill="url(#textHub)" font-weight="800">Hub</tspan></text>
   </g>
 </svg>
