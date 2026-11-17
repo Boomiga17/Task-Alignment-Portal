@@ -681,7 +681,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
       <div className="login-split-left">
         <div className="login-brand">
           <div className="login-brand-card">
-            <img src={smartHubLogo} alt="SmartHub" className="login-brand-logo" />
+            <img src={smartHubLogo} alt="Smart Hub" className="login-brand-logo" />
           </div>
         </div>
         <div className="login-hero">
@@ -712,7 +712,7 @@ function LoginPage({ onLogin, onRequestAccess, dark, setDark, portalName, stats 
         <div className="login-form-container">
           <div className="login-mobile-brand">
             <div className="login-brand-card">
-              <img src={smartHubLogo} alt="SmartHub" className="login-brand-logo" />
+              <img src={smartHubLogo} alt="Smart Hub" className="login-brand-logo" />
             </div>
           </div>
           <h2>Sign in</h2>
@@ -3253,7 +3253,7 @@ export default function App() {
         <div className="sidebar-brand-row">
           <button className="brand" onClick={handleLogout} aria-label="Sign out and return to sign in" style={{ width: '100%' }}>
             <div className="brand-logo-card" style={{ width: '100%' }}>
-              <img src={smartHubLogo} alt="SmartHub" className="sidebar-brand-logo" />
+              <img src={smartHubLogo} alt="Smart Hub" className="sidebar-brand-logo" />
             </div>
           </button>
           <button className="mobile-sidebar-close" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
@@ -5284,7 +5284,7 @@ function SignOutModal({ isOpen, onClose, onConfirm, currentEmployee }) {
         <div className="beast-signout-content">
           <span className="beast-signout-eyebrow">SESSION CONFIRMATION</span>
           <h2 id="signout-modal-title" className="beast-signout-title">
-            Sign Out of SmartHub?
+            Sign Out of Smart Hub?
           </h2>
           <p className="beast-signout-desc">
             Are you sure you want to end your current session? You will be safely signed out and returned to the sign-in screen.
