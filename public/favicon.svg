@@ -5,14 +5,16 @@
       <stop offset="50%" stop-color="#1E40AF" />
       <stop offset="100%" stop-color="#2563EB" />
     </linearGradient>
-    <linearGradient id="favOrange" x1="18" y1="14" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+    <linearGradient id="favOrange" x1="16" y1="12" x2="48" y2="48" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="#FB923C" />
       <stop offset="60%" stop-color="#F97316" />
       <stop offset="100%" stop-color="#EA580C" />
     </linearGradient>
   </defs>
   <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#favBlue)" />
-  <path d="M32 14L16 48H24.5L32 31L39.5 48H48L32 14Z" fill="#FFFFFF" />
-  <path d="M23 40.5H41L42.5 45.5H21.5L23 40.5Z" fill="url(#favOrange)" />
-  <circle cx="32" cy="32" r="4.6" fill="url(#favOrange)" stroke="#FFFFFF" stroke-width="2.2" />
+  <path d="M42 20C39.5 17 35.5 16 32 16C24.5 16 20 20.5 20 26C20 35 44 30 44 38C44 43.5 39.5 48 33 48C28 48 23 45 20.5 42" 
+        stroke="#FFFFFF" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="32" cy="32" r="5.2" fill="url(#favOrange)" stroke="#FFFFFF" stroke-width="2.5" />
+  <circle cx="42" cy="20" r="3.5" fill="url(#favOrange)" />
+  <circle cx="21" cy="42" r="3.5" fill="url(#favOrange)" />
 </svg>
