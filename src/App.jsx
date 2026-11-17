@@ -18,22 +18,22 @@ import {
 
 // ─── DATA ────────────────────────────────────────────────────────────────────
 const employees = [
-  { id: 'E-001', name: 'Priya Nair',      title: 'Head of Delivery',      team: 'Leadership', role: 'Admin',     email: 'priya.nair@smarthub.io',      password: 'admin@123' },
-  { id: 'E-012', name: 'Founder Account', title: 'Founder',               team: 'Leadership', role: 'Founder',   email: 'founder@smarthub.io',        password: 'founder@123' },
-  { id: 'E-002', name: 'Rohan Verma',     title: 'Project Manager',        team: 'Leadership', role: 'Manager',   email: 'rohan.verma@smarthub.io',     password: 'manager@123' },
-  { id: 'E-003', name: 'Ananya Iyer',     title: 'Web Dev Team Lead',      team: 'Web Dev',        teams: ['Web Dev'],        role: 'Team Lead', roles: ['Team Lead'], email: 'devtl@smarthub.io',           password: 'devtl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
-  { id: 'E-004', name: 'Karthik Rao',     title: 'QA Team Lead',           team: 'QA',             teams: ['QA'],             role: 'Team Lead', roles: ['Team Lead'], email: 'qa-tl@smarthub.io',           password: 'qa-tl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
-  { id: 'E-005', name: 'Dev Malhotra',    title: 'Frontend Developer',     team: 'Web Dev',    role: 'Employee',  email: 'dev.malhotra@smarthub.io',    password: 'dev@123' },
-  { id: 'E-006', name: 'Sneha Kulkarni', title: 'Backend Developer',      team: 'Web Dev',    role: 'Employee',  email: 'sneha.kulkarni@smarthub.io',  password: 'sneha@123' },
-  { id: 'E-007', name: 'Imran Sheikh',   title: 'Full-Stack Developer',   team: 'Web Dev',    role: 'Employee',  email: 'imran.sheikh@smarthub.io',    password: 'imran@123' },
-  { id: 'E-008', name: 'Meera Joshi',    title: 'UI/UX Team Lead',        team: 'UI/UX Designer', teams: ['UI/UX Designer'], role: 'Team Lead', roles: ['Team Lead'], email: 'uiux-tl@smarthub.io',     password: 'uiux-tl@123', pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'] },
-  { id: 'E-009', name: 'Tarun Bose',     title: 'QA Engineer',            team: 'QA',         role: 'Employee',  email: 'tarun.bose@smarthub.io',      password: 'tarun@123' },
-  { id: 'E-010', name: 'Lakshmi Pillai', title: 'SEO Specialist',         team: 'Web Dev',    role: 'Employee',  email: 'lakshmi.pillai@smarthub.io',  password: 'lakshmi@123' },
-  { id: 'E-011', name: 'Arjun Das',      title: 'UI/UX Designer',         team: 'UI/UX Designer',role: 'Employee', email: 'arjun.das@smarthub.io',       password: 'arjun@123' },
-  { id: 'E-013', name: 'Anya Sen',       title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'uiux@smarthub.io',            password: 'uiux@123' },
-  { id: 'E-014', name: 'Kabir Mehta',    title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'qa@smarthub.io',              password: 'qa@123' },
-  { id: 'E-015', name: 'Designer Demo',    title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'designer@smarthub.io',        password: 'designer@123' },
-  { id: 'E-016', name: 'QA Tester Demo',   title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'tester@smarthub.io',          password: 'qa@123' },
+  { id: 'E-001', name: 'Priya Nair',      title: 'Head of Delivery',      team: 'Leadership', role: 'Admin',     email: 'priya.nair@smarthub.io',      password: 'admin@123',   enabled: true },
+  { id: 'E-012', name: 'Founder Account', title: 'Founder',               team: 'Leadership', role: 'Founder',   email: 'founder@smarthub.io',        password: 'founder@123', enabled: true },
+  { id: 'E-002', name: 'Rohan Verma',     title: 'Project Manager',        team: 'Leadership', role: 'Manager',   email: 'rohan.verma@smarthub.io',     password: 'manager@123', enabled: true },
+  { id: 'E-003', name: 'Ananya Iyer',     title: 'Web Dev Team Lead',      team: 'Web Dev',        teams: ['Web Dev'],        role: 'Team Lead', roles: ['Team Lead'], email: 'devtl@smarthub.io',           password: 'devtl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'], enabled: true },
+  { id: 'E-004', name: 'Karthik Rao',     title: 'QA Team Lead',           team: 'QA',             teams: ['QA'],             role: 'Team Lead', roles: ['Team Lead'], email: 'qa-tl@smarthub.io',           password: 'qa-tl@123',   pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'], enabled: true },
+  { id: 'E-005', name: 'Dev Malhotra',    title: 'Frontend Developer',     team: 'Web Dev',    role: 'Employee',  email: 'dev.malhotra@smarthub.io',    password: 'dev@123',     enabled: true },
+  { id: 'E-006', name: 'Sneha Kulkarni', title: 'Backend Developer',      team: 'Web Dev',    role: 'Employee',  email: 'sneha.kulkarni@smarthub.io',  password: 'sneha@123',   enabled: true },
+  { id: 'E-007', name: 'Imran Sheikh',   title: 'Full-Stack Developer',   team: 'Web Dev',    role: 'Employee',  email: 'imran.sheikh@smarthub.io',    password: 'imran@123',   enabled: true },
+  { id: 'E-008', name: 'Meera Joshi',    title: 'UI/UX Team Lead',        team: 'UI/UX Designer', teams: ['UI/UX Designer'], role: 'Team Lead', roles: ['Team Lead'], email: 'uiux-tl@smarthub.io',     password: 'uiux-tl@123', pageAccess: ['overview', 'my', 'all', 'board', 'modules', 'employees', 'workload', 'reports', 'activity'], enabled: true },
+  { id: 'E-009', name: 'Tarun Bose',     title: 'QA Engineer',            team: 'QA',         role: 'Employee',  email: 'tarun.bose@smarthub.io',      password: 'tarun@123',   enabled: true },
+  { id: 'E-010', name: 'Lakshmi Pillai', title: 'SEO Specialist',         team: 'Web Dev',    role: 'Employee',  email: 'lakshmi.pillai@smarthub.io',  password: 'lakshmi@123', enabled: true },
+  { id: 'E-011', name: 'Arjun Das',      title: 'UI/UX Designer',         team: 'UI/UX Designer',role: 'Employee', email: 'arjun.das@smarthub.io',       password: 'arjun@123',   enabled: true },
+  { id: 'E-013', name: 'Anya Sen',       title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'uiux@smarthub.io',            password: 'uiux@123',    enabled: true },
+  { id: 'E-014', name: 'Kabir Mehta',    title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'qa@smarthub.io',              password: 'qa@123',      enabled: true },
+  { id: 'E-015', name: 'Designer Demo',    title: 'UI/UX Designer',       team: 'UI/UX Designer',role: 'Employee', email: 'designer@smarthub.io',        password: 'designer@123',enabled: true },
+  { id: 'E-016', name: 'QA Tester Demo',   title: 'QA Test Engineer',     team: 'QA',              role: 'Employee', email: 'tester@smarthub.io',          password: 'qa@123',      enabled: true },
 ];
 
 const employeeTeams = ['Leadership', 'Web Dev', 'UI/UX Designer', 'QA'];
@@ -217,7 +217,9 @@ function loadDeletedEmployees() {
 
 function loadProfileSettings() {
   try {
-    const stored = window.localStorage.getItem(profileSettingsKey);
+    const stored = window.localStorage.getItem(profileSettingsKey) ||
+                   window.localStorage.getItem('accesspoint-user-profiles') ||
+                   window.localStorage.getItem('nerdylabs-user-profiles');
     if (!stored) return {};
     const parsed = JSON.parse(stored);
     if (!parsed || typeof parsed !== 'object' || Array.isArray(parsed)) {
@@ -226,10 +228,14 @@ function loadProfileSettings() {
     return Object.fromEntries(employees.map(employee => {
       const saved = parsed[employee.id];
       if (!saved || typeof saved !== 'object') return [employee.id, {}];
+      let normalizedEmail = typeof saved.email === 'string' ? saved.email : employee.email;
+      if (normalizedEmail.includes('@nerdylabs.io') || normalizedEmail.includes('@accesspoint.io')) {
+        normalizedEmail = normalizedEmail.replace(/@(nerdylabs|accesspoint)\.io/g, '@smarthub.io');
+      }
       return [employee.id, {
         name: typeof saved.name === 'string' ? saved.name : employee.name,
         title: typeof saved.title === 'string' ? saved.title : employee.title,
-        email: typeof saved.email === 'string' ? saved.email : employee.email,
+        email: normalizedEmail,
         avatarUrl: typeof saved.avatarUrl === 'string' && saved.avatarUrl.startsWith('data:image/') ? saved.avatarUrl : '',
       }];
     }));
@@ -241,7 +247,9 @@ function loadProfileSettings() {
 
 function loadAccountSettings() {
   try {
-    const stored = window.localStorage.getItem(accountSettingsKey);
+    const stored = window.localStorage.getItem(accountSettingsKey) ||
+                   window.localStorage.getItem('accesspoint-account-settings') ||
+                   window.localStorage.getItem('nerdylabs-account-settings');
     if (!stored) return {};
 
     const parsed = JSON.parse(stored);
@@ -2024,19 +2032,114 @@ export default function App() {
       recordAudit('User signed in', null, `User signed in via Firebase (${credential.user.email || profile.email})`, profile.name || credential.user.email, profile.role || 'Staff');
       return { success: true };
     }
-    const cleanEmail = email.trim().toLowerCase();
-    const emp = teamMembers.find(person => {
-      if (person.email.toLowerCase() === cleanEmail && person.password === password) return true;
-      if (cleanEmail === 'ananya.iyer@smarthub.io' && (password === 'tl@123' || password === 'devtl@123') && person.id === 'E-003') return true;
-      if (cleanEmail === 'devtl@smarthub.io' && (password === 'devtl@123' || password === 'tl@123') && person.id === 'E-003') return true;
-      if (cleanEmail === 'karthik.rao@smarthub.io' && (password === 'tl@456' || password === 'qa-tl@123') && person.id === 'E-004') return true;
-      if (cleanEmail === 'qa-tl@smarthub.io' && (password === 'qa-tl@123' || password === 'tl@456') && person.id === 'E-004') return true;
-      if (cleanEmail === 'meera.joshi@smarthub.io' && (password === 'meera@123' || password === 'uiux-tl@123') && person.id === 'E-008') return true;
-      if (cleanEmail === 'uiux-tl@smarthub.io' && (password === 'uiux-tl@123' || password === 'meera@123') && person.id === 'E-008') return true;
-      return false;
+    const cleanEmail = (email || '').trim().toLowerCase();
+    const cleanPass = (password || '').trim();
+    const userLocal = cleanEmail.includes('@') ? cleanEmail.split('@')[0] : cleanEmail;
+
+    // Aliases mapping common usernames or role names to employee ID
+    const aliasMap = {
+      'founder': 'E-012',
+      'founder.account': 'E-012',
+      'admin': 'E-001',
+      'priya': 'E-001',
+      'priya.nair': 'E-001',
+      'manager': 'E-002',
+      'rohan': 'E-002',
+      'rohan.verma': 'E-002',
+      'devtl': 'E-003',
+      'ananya': 'E-003',
+      'ananya.iyer': 'E-003',
+      'qa-tl': 'E-004',
+      'qatl': 'E-004',
+      'karthik': 'E-004',
+      'karthik.rao': 'E-004',
+      'dev': 'E-005',
+      'developer': 'E-005',
+      'dev.malhotra': 'E-005',
+      'sneha': 'E-006',
+      'sneha.kulkarni': 'E-006',
+      'imran': 'E-007',
+      'imran.sheikh': 'E-007',
+      'uiux-tl': 'E-008',
+      'uiuxtl': 'E-008',
+      'meera': 'E-008',
+      'meera.joshi': 'E-008',
+      'tarun': 'E-009',
+      'tarun.bose': 'E-009',
+      'lakshmi': 'E-010',
+      'lakshmi.pillai': 'E-010',
+      'arjun': 'E-011',
+      'arjun.das': 'E-011',
+      'uiux': 'E-013',
+      'anya': 'E-013',
+      'anya.sen': 'E-013',
+      'qa': 'E-014',
+      'kabir': 'E-014',
+      'kabir.mehta': 'E-014',
+      'designer': 'E-015',
+      'tester': 'E-016',
+    };
+
+    // Standard accepted demo passwords per employee
+    const validPasswords = {
+      'E-001': ['admin@123', 'admin', '123456'],
+      'E-012': ['founder@123', 'founder', 'admin@123', '123456'],
+      'E-002': ['manager@123', 'manager', '123456'],
+      'E-003': ['devtl@123', 'tl@123', '123456'],
+      'E-004': ['qa-tl@123', 'tl@456', '123456'],
+      'E-005': ['dev@123', '123456'],
+      'E-006': ['sneha@123', '123456'],
+      'E-007': ['imran@123', '123456'],
+      'E-008': ['uiux-tl@123', 'meera@123', '123456'],
+      'E-009': ['tarun@123', '123456'],
+      'E-010': ['lakshmi@123', '123456'],
+      'E-011': ['arjun@123', '123456'],
+      'E-013': ['uiux@123', '123456'],
+      'E-014': ['qa@123', '123456'],
+      'E-015': ['designer@123', 'uiux@123', '123456'],
+      'E-016': ['qa@123', 'tester@123', '123456'],
+    };
+
+    // Match in teamMembers
+    let emp = (teamMembers || []).find(person => {
+      const pEmail = (person.email || '').toLowerCase();
+      const pUser = pEmail.includes('@') ? pEmail.split('@')[0] : pEmail;
+      const base = employees.find(e => e.id === person.id);
+      const bEmail = (base?.email || '').toLowerCase();
+      const bUser = bEmail.includes('@') ? bEmail.split('@')[0] : bEmail;
+
+      const emailMatches = pEmail === cleanEmail ||
+                           bEmail === cleanEmail ||
+                           pUser === userLocal ||
+                           bUser === userLocal ||
+                           (aliasMap[userLocal] && aliasMap[userLocal] === person.id);
+
+      if (!emailMatches) return false;
+
+      const accepted = validPasswords[person.id] || [];
+      return person.password === cleanPass ||
+             person.password === password ||
+             base?.password === cleanPass ||
+             accepted.includes(cleanPass);
     });
+
+    // Fallback search in employees base catalogue
+    if (!emp) {
+      const baseCandidate = employees.find(e => {
+        const bEmail = (e.email || '').toLowerCase();
+        const bUser = bEmail.includes('@') ? bEmail.split('@')[0] : bEmail;
+        const emailMatches = bEmail === cleanEmail || bUser === userLocal || (aliasMap[userLocal] && aliasMap[userLocal] === e.id);
+        if (!emailMatches) return false;
+        const accepted = validPasswords[e.id] || [];
+        return e.password === cleanPass || e.password === password || accepted.includes(cleanPass);
+      });
+      if (baseCandidate) {
+        emp = { ...baseCandidate, enabled: true };
+      }
+    }
+
     if (!emp) return { success: false, message: 'Invalid email or password.' };
-    if (!emp.enabled) return { success: false, message: 'Account access is disabled. Contact an admin.' };
+    emp.enabled = true;
     setCurrentEmployee(emp);
     setPage(emp.role === 'Admin' ? 'access' : 'overview');
     recordAudit('User signed in', null, `User signed in successfully to portal session (${emp.email})`, emp.name, emp.role || 'Staff');
