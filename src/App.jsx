@@ -1763,7 +1763,7 @@ export default function App() {
   const [currentEmployee, setCurrentEmployee] = useState(null);
   const [profileSettings, setProfileSettings] = useState(loadProfileSettings);
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
-  const [portalName, setPortalName] = useState('SmartHub');
+  const [portalName, setPortalName] = useState('Task Alignment Portal');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [accountSettings, setAccountSettings] = useState(loadAccountSettings);
   const [accessRequests, setAccessRequests] = useState(loadAccessRequests);
@@ -3303,7 +3303,12 @@ export default function App() {
             <button className="mobile-menu-toggle" onClick={() => setMobileMenuOpen(true)} aria-label="Open navigation menu">
               <Icon name="menu" size={20} />
             </button>
-            <h2 className="topbar-title">{activePage === 'profile' ? 'My Profile' : activePage === 'activity' ? 'Activity & Notifications' : navItems.find(([id]) => id === activePage)?.[1] || 'Overview'}</h2>
+            <div className="topbar-title-wrap">
+              <h2 className="topbar-title">Task Alignment Portal</h2>
+              <span className="topbar-page-badge">
+                {activePage === 'profile' ? 'My Profile' : activePage === 'activity' ? 'Activity & Notifications' : navItems.find(([id]) => id === activePage)?.[1] || 'Overview'}
+              </span>
+            </div>
           </div>
           {role !== 'Admin' && <label className="global-search">
             <Icon name="search" size={16} />
